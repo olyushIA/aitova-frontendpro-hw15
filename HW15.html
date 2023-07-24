@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        const arr = [16,-37,54,-4,72,-56,47,4, -16,25,-37,46,4,-51,27,-63,4,-54,76,-4,12,-35,4,47];
+        
+        //функція з логікою для фільтрування позитивних елементів
+        function isPositive (array) {
+            return array.filter((element) => element > 0)
+        }
+
+        //функція з логікою для фільтрування негативних елементів
+        function isNegative (array) {
+            return array.filter((element) => element < 0)
+        }
+
+        //рахує кількість елементів певної вибірки (функція вищого порядку)
+        function countLength (array, callback) {
+            return callback(array).length;
+        }
+        
+        //рахує суму позитивних елементів
+        function sumPositive (array) {
+            return array.reduce((acc, element) => {
+                return element > 0 ? acc + element : acc;
+            }, 0)
+        }
+
+        //виводить кількість позитивних елементів та їх суму 
+        console.log (countLength(arr, isPositive), sumPositive(arr));
+
+
+        //максимальний елемент масиву та його порядковий номер
+        function arrayMax (array) {
+            return Math.max.apply (null, array);
+        }
+        console.log (arrayMax(arr), arr.indexOf(arrayMax(arr)));
+
+        
+        //мінімальний елемент масиву та його порядковий номер
+        function arrayMin (array) {
+            return Math.min.apply (null, array);
+        }
+        console.log (arrayMin(arr), arr.indexOf(arrayMin(arr)));
+
+        //виводить кількість негативних елементів
+        console.log (countLength(arr, isNegative));
+
+        //
+    </script>
+</body>    
+</html>
