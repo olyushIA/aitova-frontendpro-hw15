@@ -6,47 +6,80 @@
         
         //функція з логікою для фільтрування позитивних елементів
         function isPositive (array) {
-            return array.filter((element) => element > 0)
+            return array.filter((element) => element > 0);
         }
 
         //функція з логікою для фільтрування негативних елементів
         function isNegative (array) {
-            return array.filter((element) => element < 0)
+            return array.filter((element) => element < 0);
         }
 
-        //рахує кількість елементів певної вибірки (функція вищого порядку)
-        function countLength (array, callback) {
-            return callback(array).length;
+        //функція з логікою для фільтрування парних елементів
+        function isEven (array) {
+            return array.filter((element) => element % 2 === 0);
         }
+
+        //функція з логікою для фільтрування непарних елементів
+        function isOdd (array) {
+            return array.filter((element) => element % 2 !== 0);
+        }
+
+        //рахує кількість елементів певної вибірки
+        function countLength (array) {
+            return array.length;
+        } 
         
-        //рахує суму позитивних елементів
-        function sumPositive (array) {
+        //рахує суму елементів масиву
+        function sum (array) {
             return array.reduce((acc, element) => {
-                return element > 0 ? acc + element : acc;
+                return acc + element;
             }, 0)
         }
 
-        //виводить кількість позитивних елементів та їх суму 
-        console.log (countLength(arr, isPositive), sumPositive(arr));
+                //виводить кількість позитивних елементів та їх суму 
+                console.log (countLength(isPositive(arr)), sum(isPositive(arr)));
 
 
-        //максимальний елемент масиву та його порядковий номер
-        function arrayMax (array) {
-            return Math.max.apply (null, array);
-        }
-        console.log (arrayMax(arr), arr.indexOf(arrayMax(arr)));
+                //максимальний елемент масиву та його порядковий номер
+                function arrayMax (array) {
+                    return Math.max.apply (null, array);
+                }
+                console.log (arrayMax(arr), arr.indexOf(arrayMax(arr)));
 
         
-        //мінімальний елемент масиву та його порядковий номер
-        function arrayMin (array) {
-            return Math.min.apply (null, array);
-        }
-        console.log (arrayMin(arr), arr.indexOf(arrayMin(arr)));
+                //мінімальний елемент масиву та його порядковий номер
+                function arrayMin (array) {
+                    return Math.min.apply (null, array);
+                }
+                console.log (arrayMin(arr), arr.indexOf(arrayMin(arr)));
 
-        //виводить кількість негативних елементів
-        console.log (countLength(arr, isNegative));
+                //виводить кількість негативних елементів
+                console.log (countLength(isNegative(arr)));
 
-        //
+                //виводить кількість парних позитивних елементів
+                console.log (countLength(isEven(isPositive(arr))));
+
+                //виводить кількість непарних позитивних елементів
+                console.log (countLength(isOdd(isPositive(arr))));
+
+                //виводить суму парних позитивних елементів
+                console.log (sum(isPositive(isEven(arr))));
+
+                //виводить суму непарних позитивних елементів
+                console.log (sum(isPositive(isOdd(arr))));
+
+                //Знайти добуток позитивних елементів.
+                console.log (isPositive(arr).reduce((acc, element) => {
+                    return acc * element;
+                    }, 1));
+
+                //Знайти найбільший серед елементів масиву, решта обнулити.
+                console.log (arr.map((element) => {
+                    if (element != arrayMax(arr)) {
+                        return 0;
+                    } return element;
+                    })
+                )
     </script>
 </body>    
 </html>
